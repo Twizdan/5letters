@@ -53,8 +53,8 @@ while flag.lower() != "нет":
                 if lol == len(user_input_bad_guessed_letters_list):
                     data_almost_guessed.append(data_guessed[i])
 
-    # print(*data_almost_guessed if len(data_almost_guessed) != 0 else data_guessed)
-    # print('Продолжаем? Для выхода напишите "нет".')
-    # flag = input()
+    print(*data_almost_guessed if len(data_almost_guessed) != 0 else data_guessed)
+    print('Продолжаем? Для выхода напишите "нет".')
+    flag = input()
 
 
