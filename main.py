@@ -19,12 +19,21 @@ while flag.lower() != "нет":
         replace("*", ".").lower()
     user_input_bad_guessed_letters_list = []
 
-    counter = int(input('Ещё масочку для неверных? Для конца напишите "0".'))
-    if counter != 0:
+    counter = input('Ещё масочку для неверных? Для конца напишите "0".')
+    if counter != '0' and counter.isdigit():
+        counter = int(counter)
         for i in range(counter):
             print("Введите буквы по местам, на которых они не стоят. Пример: ***Н*")
             user_input_bad_guessed_letters = input().replace("*", ".").lower()
-            user_input_bad_guessed_letters_list.append(user_input_bad_guessed_letters)
+            user_input_bad_guessed_letters_1 = user_input_bad_guessed_letters.replace(".","")
+            user_input_bad_guessed_letters = list(user_input_bad_guessed_letters)
+            if len(user_input_bad_guessed_letters_1) > 1:
+                for i in range(len(user_input_bad_guessed_letters_1)):
+                    for j in range(len(user_input_bad_guessed_letters)):
+                        if user_input_bad_guessed_letters[j] != ".":
+                            m = '.' * (j) + user_input_bad_guessed_letters[j] + '.' * (len(user_input_bad_guessed_letters) - j  - 1)
+                            user_input_bad_guessed_letters[j] = "."
+                            user_input_bad_guessed_letters_list.append(m)
     if user_input_guessed_letters == '':
         user_input_guessed_letters = '.....'
     for i in range(len(data)):
