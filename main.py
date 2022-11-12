@@ -34,6 +34,8 @@ while flag.lower() != "нет":
                             m = '.' * (j) + user_input_bad_guessed_letters[j] + '.' * (len(user_input_bad_guessed_letters) - j  - 1)
                             user_input_bad_guessed_letters[j] = "."
                             user_input_bad_guessed_letters_list.append(m)
+            else:
+                user_input_bad_guessed_letters_list.append("".join(user_input_bad_guessed_letters))
     if user_input_guessed_letters == '':
         user_input_guessed_letters = '.....'
     for i in range(len(data)):
