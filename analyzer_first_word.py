@@ -5,10 +5,10 @@ f = open(r"singular.txt", encoding='utf-8')
 data = f.readlines()
 data = [i[:-1] for i in data if len(i) == 6]
 
-counter = Counter()
-for i in range(len(data)):
-    counter += Counter(data[i])
-print(counter)
+# counter = Counter()
+# for i in range(len(data)):
+#     counter += Counter(data[i])
+# print(counter)
 
 counter = Counter()
 for i in range(len(data)):
