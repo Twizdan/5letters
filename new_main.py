@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 
+
 def find(good, maybe, bad):
     data = pd.read_csv("5letters.csv", index_col=0)["0"]
     z = data.str.split("", expand=True).drop([0, 6], axis=1)
@@ -20,11 +21,12 @@ def find(good, maybe, bad):
         temp[1] = coefficients
         temp = temp.sort_values(by=1, ascending=False)[:20]
         coef_sum = temp[1].sum()
-        temp[1] = (temp[1]/coef_sum).round(3)*100
+        temp[1] = (temp[1] / coef_sum).round(3) * 100
         temp.columns = ["Слово", "Шанс (%)"]
-    if temp.shape[0] == 0:
+    else:
         return "Не найдено ни одного слова."
     return temp.head(20).to_string(index=False)
+
 
 def file_creator(name: str, endname: str):
     with open(name, encoding='utf-8') as f:
@@ -36,6 +38,7 @@ def file_creator(name: str, endname: str):
         data = pd.Series(data)
         print(data)
         data.to_csv(endname)
+
 
 if __name__ == '__main__':
     good = '1'
