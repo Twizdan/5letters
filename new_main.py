@@ -1,19 +1,6 @@
 import pandas as pd
 import re
 
-
-# Создаем файл для работы. Оставляем из всего списка слов только слова из 5 букв.
-# with open(r"singular.txt", encoding='utf-8') as f:
-#     readed_lines = f.readlines()
-#     data = pd.Series(readed_lines)
-#     data = data.str.replace(r'\W', '')
-#     data = data[data.str.len() == 5]
-#     data = data.unique()
-#     data = pd.Series(data)
-#     print(data)
-#     data.to_csv("5letters.csv")
-#     #data.to_csv("5letters.csv")
-
 def find(good, maybe, bad):
     temp = data[data.str.match(good, flags=re.IGNORECASE)]
     temp = temp.str.replace(rf'[{bad} ]', '', regex=True)
@@ -26,6 +13,7 @@ def find(good, maybe, bad):
             for j in range(coefficients.shape[0]):
                 coefficients[i + 1][j] = mas[i][str(coefficients[i + 1][j])]
         coefficients = coefficients.sum(axis=1)
+
         temp = pd.DataFrame(temp)
         temp[1] = coefficients
         temp = temp.sort_values(by=1, ascending=False)
