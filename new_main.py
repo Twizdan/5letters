@@ -13,19 +13,16 @@ def find(good, maybe, bad):
             for j in range(coefficients.shape[0]):
                 coefficients[i + 1][j] = mas[i][str(coefficients[i + 1][j])]
         coefficients = coefficients.sum(axis=1)
-
         temp = pd.DataFrame(temp)
         temp[1] = coefficients
         temp = temp.sort_values(by=1, ascending=False)
-    return temp
+    return temp.head(20)
 
 
 if __name__ == '__main__':
     data = pd.read_csv("5letters.csv", index_col=0)["0"]
     z = data.str.split("", expand=True).drop([0, 6], axis=1)
-    mas = [0] * 5
-    for i in range(5):
-        mas[i] = (z[i + 1].value_counts(normalize=True))
+    mas = [z[i + 1].value_counts(normalize=True) for i in range(5)]
     good = '1'
     while len(good) != 0:
         good = input('Напишите найденные буквы, ненайденные буквы поставьте точкой: ').lower()
