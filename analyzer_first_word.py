@@ -1,38 +1,8 @@
-from collections import Counter
+import pandas as pd
 
-f = open(r"singular.txt", encoding='utf-8')
-
-data = f.readlines()
-data = [i[:-1] for i in data if len(i) == 6]
-
-# counter = Counter()
-# for i in range(len(data)):
-#     counter += Counter(data[i])
-# print(counter)
-
-counter = Counter()
-for i in range(len(data)):
-    counter += Counter(data[i][0])
-print(counter)
-
-counter = Counter()
-for i in range(len(data)):
-    counter += Counter(data[i][1])
-print(counter)
-
-counter = Counter()
-for i in range(len(data)):
-    counter += Counter(data[i][2])
-print(counter)
-
-counter = Counter()
-for i in range(len(data)):
-    counter += Counter(data[i][3])
-print(counter)
-
-counter = Counter()
-for i in range(len(data)):
-    counter += Counter(data[i][4])
-print(counter)
-
-
+data = pd.read_csv("5letters.csv", index_col=0)["0"]
+z = data.str.split("", expand=True)
+print(z.head())
+mas = [0] * 5
+for i in range(1, 6):
+    mas[i] = (z[i].value_counts(normalize=True))
