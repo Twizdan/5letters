@@ -18,6 +18,16 @@ def find(good, maybe, bad):
         temp = temp.sort_values(by=1, ascending=False)
     return temp.head(20)
 
+def file_creator(name: str, endname: str):
+    with open(name, encoding='utf-8') as f:
+        readed_lines = f.readlines()
+        data = pd.Series(readed_lines)
+        data = data.str.replace(r'\W', '')
+        data = data[data.str.len() == 5]
+        data = data.unique()
+        data = pd.Series(data)
+        print(data)
+        data.to_csv(endname)
 
 if __name__ == '__main__':
     data = pd.read_csv("5letters.csv", index_col=0)["0"]
