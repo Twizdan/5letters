@@ -1,1 +1,10 @@
-print('I LOVE YOU SO MUCH, MY LOVELY BOYFRIND')
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s"
+)
+
+logger = logging.getLogger(__name__)
+
+logger.info("I LOVE YOU SO MUCH, MY LOVELY BOYFRIN")
